@@ -5,19 +5,26 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
 from .authentication import WalletTokenAuthentication
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 
 
 class AuthenticateUserView(APIView):
     """Authenticates user with wallet signature"""
 
     permission_classes = [AllowAny]
+    throttle_classess = [AnonRateThrottle]
 
     def post(self, request):
-        serializer = VerifySignatureSerializer(data=request.data, context={"request": request})
+        serializer = VerifySignatureSerializer(
+            data=request.data, context={"request": request}
+        )
         try:
             if serializer.is_valid(raise_exception=True):
                 response_data = serializer.save()
-                return Response({"status": "success", "data": response_data}, status=status.HTTP_200_OK)
+                return Response(
+                    {"status": "success", "data": response_data},
+                    status=status.HTTP_200_OK,
+                )
         except (ValidationError, Exception) as e:
             return Response(
                 {"status": "error", "error": str(e)},
@@ -32,11 +39,14 @@ class AuthenticateUserView(APIView):
 class DisconnectUserView(APIView):
     """Disconnects user and invalidates auth token"""
 
+    throttle_classess = [UserRateThrottle]
+
     def post(self, request):
         try:
             WalletTokenAuthentication().disconnect(request)
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Exception as e:
             return Response(
-                {"status": "error", "error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                {"status": "error", "error": str(e)},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )

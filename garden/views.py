@@ -3,10 +3,13 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Garden, PlantType, Plant
 from .serializers import GardenSerializer, PlantTypeSerializer, PlantSerializer
+from rest_framework.throttling import UserRateThrottle
 
 
 class GardenView(APIView):
     """Get or create a user's garden"""
+
+    throttle_classes = [UserRateThrottle]
 
     def get(self, request):
         try:
@@ -24,6 +27,8 @@ class GardenView(APIView):
 
 class GardenStatusView(APIView):
     """Monitor system status and recent updates"""
+
+    throttle_classes = [UserRateThrottle]
 
     def get(self, request):
         """Get current garden status"""
@@ -57,6 +62,8 @@ class GardenStatusView(APIView):
 
 
 class PlantTypeView(APIView):
+    throttle_classes = [UserRateThrottle]
+
     def get(self, request):
         """Get available plant types"""
         try:
@@ -80,6 +87,8 @@ class PlantTypeView(APIView):
 
 
 class PlantManagementView(APIView):
+    throttle_classes = [UserRateThrottle]
+
     def post(self, request):
         """Plant a new plant"""
         try:
