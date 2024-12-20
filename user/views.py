@@ -12,7 +12,7 @@ class AuthenticateUserView(APIView):
     """Authenticates user with wallet signature"""
 
     permission_classes = [AllowAny]
-    throttle_classess = [AnonRateThrottle]
+    throttle_classes = [AnonRateThrottle]
 
     def post(self, request):
         serializer = VerifySignatureSerializer(
