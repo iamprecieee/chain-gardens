@@ -151,6 +151,14 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
     ],
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.AnonRateThrottle",
+        "rest_framework.throttling.UserRateThrottle",
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "7/min",
+        "user": "15/min",
+    },
 }
 
 # Abstract Chain Configuration
@@ -163,9 +171,7 @@ ABSTRACT = {
 }
 
 # CORS Configuration
-CORS_ALLOWED_ORIGINS = [
-    f"https://{os.getenv('CORS_ALLOWED_ORIGINS_VALUE')}"
-]
+CORS_ALLOWED_ORIGINS = [f"https://{os.getenv('CORS_ALLOWED_ORIGINS_VALUE')}"]
 
 CORS_ALLOW_CREDENTIALS = True
 
