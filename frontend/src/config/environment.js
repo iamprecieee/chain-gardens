@@ -1,5 +1,5 @@
 const environment = {
-  API_URL: process.env.REACT_APP_API_URL || "http://localhost:8000/api/v1",
+  API_URL: process.env.REACT_APP_API_URL || "https://chain-gardens.onrender.com/api/v1",
   CHAIN_ID: process.env.REACT_APP_CHAIN_ID || "0x2B74",
   CHAIN_NAME: process.env.REACT_APP_CHAIN_NAME || "Abstract Testnet",
   RPC_URL: process.env.REACT_APP_RPC_URL || "https://api.testnet.abs.xyz",
