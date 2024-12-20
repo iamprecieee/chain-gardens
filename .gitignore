@@ -9,3 +9,5 @@ migrations/
 celerybeat-schedule
 .env
 venv/
+staticfiles/
+fixtures/
