@@ -16,14 +16,14 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     "update-blockchain-metrics": {
         "task": "blockchain.tasks.update_blockchain_metrics",
-        "schedule": 30.0,
+        "schedule": 300.0, # Increased to 5 minutes
     },
     "process_garden_updates": {
         "task": "garden.tasks.process_garden_updates",
-        "schedule": 30.0,
+        "schedule": 300.0,
     },
     "monitor_user_activities": {
         "task": "blockchain.tasks.monitor_user_activities",
-        "schedule": 30.0,
+        "schedule": 300.0,
     },
 }
