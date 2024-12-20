@@ -20,10 +20,10 @@ app.conf.beat_schedule = {
     },
     "process_garden_updates": {
         "task": "garden.tasks.process_garden_updates",
-        "schedule": 300.0,
+        "schedule": 350.0,
     },
     "monitor_user_activities": {
         "task": "blockchain.tasks.monitor_user_activities",
-        "schedule": 300.0,
+        "schedule": 400.0,
     },
 }
