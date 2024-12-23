@@ -24,6 +24,6 @@ app.conf.beat_schedule = {
     },
     "monitor_user_activities": {
         "task": "blockchain.tasks.monitor_user_activities",
-        "schedule": 400.0,
+        "schedule": 60.0,
     },
 }
