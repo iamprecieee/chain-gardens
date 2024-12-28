@@ -142,11 +142,11 @@ class BlockchainMonitor:
                     # Check value and method ID
                     if int(tx.get("value", "0")) > 0:
                         activities.append("transfer")
-                    method_id = tx.get("methodId", "").lower()
-                    if method_id == "0x38ed1739":  # swap
-                        activities.append("swap")
-                    elif method_id == "0xa694fc3a":  # stake
-                        activities.append("stake")
+                    # method_id = tx.get("methodId", "").lower()
+                    # if method_id == "0x38ed1739":  # swap
+                    #     activities.append("swap")
+                    # elif method_id == "0xa694fc3a":  # stake
+                    #     activities.append("stake")
                 except Exception as tx_error:
                     continue
             # Update the last processed hash to the newest transaction we've seen

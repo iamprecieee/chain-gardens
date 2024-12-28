@@ -5,8 +5,8 @@ export function PestAlert({ garden }) {
 
   const pestSolutions = {
     aphids: "Transfer tokens to combat aphids",
-    slugs: "Perform a swap to remove slugs",
-    fungus: "Stake tokens to cure fungus",
+    slugs: "Transfer tokens to remove slugs", // Temporary solution
+    fungus: "Transfer tokens to cure fungus",
   };
 
   return (
