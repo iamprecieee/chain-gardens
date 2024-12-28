@@ -12,8 +12,8 @@ import random
 class GrowthService:
     PEST_TYPES = {
         "aphids": {"damage": 0.2, "solution": "transfer"},
-        "slugs": {"damage": 0.3, "solution": "swap"},
-        "fungus": {"damage": 0.4, "solution": "stake"},
+        "slugs": {"damage": 0.3, "solution": "transfer"}, # Temporary solution
+        "fungus": {"damage": 0.4, "solution": "transfer"},
     }
     BASE_GROWTH_RATE = 0.05
 
@@ -80,8 +80,8 @@ class GrowthService:
         try:
             activities = {
                 "transfer": {"growth": 0.2, "pest_resistance": 0.3},
-                "swap": {"growth": 0.3, "pest_resistance": 0.2},
-                "stake": {"growth": 0.4, "pest_resistance": 0.4},
+                # "swap": {"growth": 0.3, "pest_resistance": 0.2},
+                # "stake": {"growth": 0.4, "pest_resistance": 0.4},
             }
             if activity_type in activities:
                 # Update activity timestamp
